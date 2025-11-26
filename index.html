@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single-Core vs Multi-Core: Perbandingan Interaktif</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Kelompok 5</div>
+                <ul class="nav-links">
+                    <li><a href="#analogy">Analogi</a></li>
+                    <li><a href="#technical">Teknis</a></li>
+                    <li><a href="#benchmark">Benchmark</a></li>
+                    <li><a href="#recommendation">Rekomendasi</a></li>
+                    <li><a href="#glossary">Glosarium</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Single-Core vs Multi-Core</h1>
+            <p>Jelajahi perbedaan mendasar antara arsitektur prosesor single-core dan multi-core melalui visualisasi interaktif dan simulasi yang mudah dipahami.</p>
+            <a href="#analogy" class="btn">Mulai Eksplorasi</a>
+        </div>
+    </section>
+
+    <section id="analogy" class="analogy-section">
+        <div class="container">
+            <h2 class="section-title">Analogi: Kasir di Supermarket</h2>
+            <div class="analogy-container">
+                <div class="analogy-controls">
+                    <button id="add-customer" class="btn">Tambah Pelanggan</button>
+                    <button id="start-simulation" class="btn">Mulai Simulasi</button>
+                    <button id="reset-simulation" class="btn">Reset</button>
+                </div>
+                <div class="supermarket-visualization">
+                    <div class="core-type">
+                        <h3 class="core-title">Single-Core (1 Kasir)</h3>
+                        <div class="checkout-area">
+                            <div class="cashiers-container single-cashier">
+                                <div class="cashier" >Kasir</div>
+                            </div>
+                            <div class="queue" id="single-queue">
+                                <!-- Pelanggan akan ditambahkan di sini -->
+                            </div>
+                        </div>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-value" id="single-customers">0</div>
+                                <div>Pelanggan</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="single-time">0s</div>
+                                <div>Waktu</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="core-type">
+                        <h3 class="core-title">Multi-Core (4 Kasir)</h3>
+                        <div class="checkout-area">
+                            <div class="cashiers-container">
+                                <div class="cashier">Kasir 1</div>
+                                <div class="cashier">Kasir 2</div>
+                                <div class="cashier">Kasir 3</div>
+                                <div class="cashier">Kasir 4</div>
+                            </div>
+                            <div class="queue" id="multi-queue">
+                                <!-- Pelanggan akan ditambahkan di sini -->
+                            </div>
+                        </div>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-value" id="multi-customers">0</div>
+                                <div>Pelanggan</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="multi-time">0s</div>
+                                <div>Waktu</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="analogy-explanation">
+                    <p>Dalam analogi ini, setiap pelanggan mewakili sebuah tugas (task) yang perlu diproses oleh CPU. Single-core seperti memiliki hanya satu kasir yang harus melayani semua pelanggan secara berurutan, sementara multi-core memiliki beberapa kasir yang dapat melayani pelanggan secara bersamaan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technical" class="technical-section">
+        <div class="container">
+            <h2 class="section-title">Eksplorasi Teknis: Pipeline CPU</h2>
+            <div class="pipeline-container">
+                <div class="pipeline-controls">
+                    <button id="add-instruction" class="btn">Tambah Instruksi</button>
+                    <button id="toggle-core-view" class="btn">Toggle Single/Multi Core</button>
+                    <button id="start-pipeline" class="btn">Jalankan Pipeline</button>
+                    <button id="hazard-explanation" class="btn">Penjelasan Hazards</button>
+                </div>
+                <div class="pipeline-visualization">
+                    <div class="pipeline" id="single-pipeline">
+                        <div class="pipeline-stage">
+                            <div class="stage-title">Fetch</div>
+                            <div class="instructions-container"></div>
+                        </div>
+                        <div class="pipeline-stage">
+                            <div class="stage-title">Decode</div>
+                            <div class="instructions-container"></div>
+                        </div>
+                        <div class="pipeline-stage">
+                            <div class="stage-title">Execute</div>
+                            <div class="instructions-container"></div>
+                        </div>
+                        <div class="pipeline-stage">
+                            <div class="stage-title">Write Back</div>
+                            <div class="instructions-container"></div>
+                        </div>
+                    </div>
+                    <div class="pipeline" id="multi-pipeline" style="display: none;">
+                        <!-- Pipeline multi-core akan ditambahkan di sini -->
+                    </div>
+                </div>
+                <div class="pipeline-explanation">
+                    <p>Pipeline CPU adalah teknik yang memungkinkan beberapa instruksi diproses secara bersamaan dalam tahapan yang berbeda. Pada single-core, hanya satu pipeline yang aktif, sementara multi-core memiliki beberapa pipeline yang bekerja secara paralel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benchmark" class="benchmark-section">
+        <div class="container">
+            <h2 class="section-title">Simulasi Benchmark</h2>
+            <div class="benchmark-container">
+                <div class="benchmark-controls">
+                    <div class="workload-selector">
+                        <button class="workload-btn active" data-workload="gaming">Gaming</button>
+                        <button class="workload-btn" data-workload="video-editing">Video Editing</button>
+                        <button class="workload-btn" data-workload="web-browsing">Web Browsing</button>
+                    </div>
+                    <button id="run-benchmark" class="btn">Jalankan Benchmark</button>
+                </div>
+                <div class="benchmark-results">
+                    <div id="benchmark-chart"></div>
+                </div>
+                <div class="benchmark-explanation">
+                    <p>Benchmark ini mensimulasikan bagaimana performa CPU dengan jumlah core yang berbeda dalam menangani berbagai jenis workload. Perhatikan bahwa workload yang dapat diparalelkan (seperti rendering video) akan mendapatkan manfaat lebih besar dari core yang lebih banyak.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="recommendation" class="recommendation-section">
+        <div class="container">
+            <h2 class="section-title">Mana yang Lebih Baik untuk Anda?</h2>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>1. Apa penggunaan utama perangkat Anda?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="gaming">Gaming</div>
+                        <div class="quiz-option" data-value="productivity">Produktivitas (Office, browsing)</div>
+                        <div class="quiz-option" data-value="content-creation">Konten Kreatif (Video editing, 3D rendering)</div>
+                        <div class="quiz-option" data-value="programming">Programming & Development</div>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <h3>2. Berapa budget yang Anda siapkan untuk CPU?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="low">Rendah (Di bawah Rp 3 juta)</div>
+                        <div class="quiz-option" data-value="medium">Menengah (Rp 3-6 juta)</div>
+                        <div class="quiz-option" data-value="high">Tinggi (Di atas Rp 6 juta)</div>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <h3>3. Aplikasi apa yang paling sering Anda gunakan?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="single-threaded">Aplikasi single-threaded (sebagian game, aplikasi office)</div>
+                        <div class="quiz-option" data-value="multi-threaded">Aplikasi multi-threaded (video editor, compiler)</div>
+                        <div class="quiz-option" data-value="mixed">Kombinasi keduanya</div>
+                    </div>
+                </div>
+                <button id="get-recommendation" class="btn">Dapatkan Rekomendasi</button>
+                <div class="quiz-result" id="recommendation-result">
+                    <!-- Hasil rekomendasi akan ditampilkan di sini -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="glossary" class="glossary-section">
+        <div class="container">
+            <h2 class="section-title">Glosarium</h2>
+            <div class="glossary-container">
+                <div class="glossary-term">
+                    <div class="term-title">
+                        <span class="term-name">Core</span>
+                        <span class="term-toggle">+</span>
+                    </div>
+                    <div class="term-definition">
+                        <p>Unit pemrosesan independen dalam sebuah CPU yang mampu mengeksekusi instruksi. Sebuah CPU dapat memiliki satu core (single-core) atau beberapa core (multi-core).</p>
+                    </div>
+                </div>
+                <div class="glossary-term">
+                    <div class="term-title">
+                        <span class="term-name">Thread</span>
+                        <span class="term-toggle">+</span>
+                    </div>
+                    <div class="term-definition">
+                        <p>Urutan instruksi yang dapat dijadwalkan untuk dijalankan oleh core. Sebuah core dapat menangani satu thread (single-threading) atau beberapa thread sekaligus (multi-threading).</p>
+                    </div>
+                </div>
+                <div class="glossary-term">
+                    <div class="term-title">
+                        <span class="term-name">Clock Speed</span>
+                        <span class="term-toggle">+</span>
+                    </div>
+                    <div class="term-definition">
+                        <p>Kecepatan di mana sebuah core mengeksekusi instruksi, diukur dalam Hertz (Hz). Clock speed yang lebih tinggi biasanya berarti kinerja single-core yang lebih baik.</p>
+                    </div>
+                </div>
+                <div class="glossary-term">
+                    <div class="term-title">
+                        <span class="term-name">Parallelism</span>
+                        <span class="term-toggle">+</span>
+                    </div>
+                    <div class="term-definition">
+                        <p>Kemampuan untuk mengeksekusi beberapa instruksi atau tugas secara bersamaan. Multi-core CPU memungkinkan parallelism yang lebih besar dibandingkan single-core.</p>
+                    </div>
+                </div>
+                <div class="glossary-term">
+                    <div class="term-title">
+                        <span class="term-name">Pipeline</span>
+                        <span class="term-toggle">+</span>
+                    </div>
+                    <div class="term-definition">
+                        <p>Teknik di mana eksekusi instruksi dibagi menjadi beberapa tahap yang dapat diproses secara berurutan, memungkinkan beberapa instruksi berada dalam tahap yang berbeda secara bersamaan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="scroll-to-top" id="scrollToTop">↑</button>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Kelompok 5</div>
+                <ul class="footer-links">
+                    <li><a href="#analogy">Analogi</a></li>
+                    <li><a href="#technical">Teknis</a></li>
+                    <li><a href="#benchmark">Benchmark</a></li>
+                    <li><a href="#recommendation">Rekomendasi</a></li>
+                    <li><a href="#glossary">Glosarium</a></li>
+                </ul>
+                <p>&copy; 2025 Kelompok-5 TIF 25F. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
