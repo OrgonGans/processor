@@ -28,21 +28,20 @@
                     <li><a href="#benchmark">Benchmark</a></li>
                     <li><a href="#recommendation">Rekomendasi</a></li>
                     <li><a href="#glossary">Glosarium</a></li>
-                    <li><a href="#team">Tim</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" style="margin-top: 0; padding: 10px;">
         <div class="container">
-            <h1>Single-Core vs Multi-Core</h1>
+            <h1 class="reveal">Single-Core vs Multi-Core</h1>
             <div class="swiper team-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="team-member">
                             <div class="member-image-wrapper">
-                                <img src="img/team/aqshal.jpg" alt="Aqshal Virgiawan" class="member-image" />
+                                <img src="img/anggota/aqsal.jpg" alt="Aqshal Virgiawan" class="member-image" />
                             </div>
                             <h3>Aqshal Virgiawan</h3>
                             <p class="member-role">UI/UX Designer</p>
@@ -51,7 +50,7 @@
                     <div class="swiper-slide">
                         <div class="team-member">
                             <div class="member-image-wrapper">
-                                <img src="img/team/dika.jpg" alt="Dika Pida Ismail" class="member-image" />
+                                <img src="img/anggota/dika.jpeg" alt="Dika Pida Ismail" class="member-image" />
                             </div>
                             <h3>Dika Pida Ismail</h3>
                             <p class="member-role">Lead Developer</p>
@@ -60,7 +59,7 @@
                     <div class="swiper-slide">
                         <div class="team-member">
                             <div class="member-image-wrapper">
-                                <img src="img/team/fauzan.jpg" alt="Fauzan Fathurrohman" class="member-image" />
+                                <img src="img/anggota/fauzan.jpg" alt="Fauzan Fathurrohman" class="member-image" />
                             </div>
                             <h3>Fauzan Fathurrohman</h3>
                             <p class="member-role">Backend Developer</p>
@@ -69,7 +68,7 @@
                     <div class="swiper-slide">
                         <div class="team-member">
                             <div class="member-image-wrapper">
-                                <img src="img/team/harlan.jpg" alt="Harlan Ikhsan" class="member-image" />
+                                <img src="img/anggota/harlan.jpg" alt="Harlan Ikhsan" class="member-image" />
                             </div>
                             <h3>Harlan Ikhsan</h3>
                             <p class="member-role">Quality Assurance</p>
@@ -87,7 +86,7 @@
                     <div class="swiper-slide">
                         <div class="team-member">
                             <div class="member-image-wrapper">
-                                <img src="img/team/rafly.jpg" alt="Rafly Al Bukhary" class="member-image" />
+                                <img src="img/anggota/raflyal.jpg" alt="Rafly Al Bukhary" class="member-image" />
                             </div>
                             <h3>Rafly Al Bukhary</h3>
                             <p class="member-role">Project Manager</p>
@@ -96,34 +95,36 @@
                     <div class="swiper-slide">
                         <div class="team-member">
                             <div class="member-image-wrapper">
-                                <img src="img/team/ridho.jpg" alt="Ridho Muhamad Ilham" class="member-image" />
+                                <img src="img/anggota/ridho.jpg" alt="Ridho Muhamad Ilham" class="member-image" />
                             </div>
                             <h3>Ridho Muhamad Ilham</h3>
                             <p class="member-role">Frontend Developer</p>
                         </div>
                     </div>
                 </div>
+                <div class="slide-navigation-area prev-area" id="prevArea"></div>
+                <div class="slide-navigation-area next-area" id="nextArea"></div>
             </div>
-            <p>Jelajahi perbedaan mendasar antara arsitektur prosesor single-core dan multi-core melalui visualisasi interaktif dan simulasi yang mudah dipahami.</p>
-            <a href="#analogy" class="btn">Mulai Eksplorasi</a>
+            <p class="reveal">Jelajahi perbedaan mendasar antara arsitektur prosesor single-core dan multi-core melalui visualisasi interaktif dan simulasi yang mudah dipahami.</p>
+            <a href="#analogy" class="btn reveal">Mulai Eksplorasi</a>
         </div>
     </section>
 
     <section id="analogy" class="analogy-section">
         <div class="container">
-            <h2 class="section-title">Analogi: Kasir di Supermarket</h2>
+            <h2 class="section-title reveal">Analogi: Kasir di Supermarket</h2>
             <div class="analogy-container">
-                <div class="analogy-controls">
+                <div class="analogy-controls reveal">
                     <button id="add-customer" class="btn">Tambah Pelanggan</button>
                     <button id="start-simulation" class="btn">Mulai Simulasi</button>
                     <button id="reset-simulation" class="btn">Reset</button>
                 </div>
-                <div class="supermarket-visualization">
+                <div class="supermarket-visualization reveal">
                     <div class="core-type">
                         <h3 class="core-title">Single-Core (1 Kasir)</h3>
                         <div class="checkout-area">
                             <div class="cashiers-container single-cashier">
-                                <div class="cashier" >Kasir</div>
+                                <div class="cashier">Kasir</div>
                             </div>
                             <div class="queue" id="single-queue">
                                 <!-- Pelanggan akan ditambahkan di sini -->
@@ -166,7 +167,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="analogy-explanation">
+                <div class="analogy-explanation reveal">
                     <p>Dalam analogi ini, setiap pelanggan mewakili sebuah tugas (task) yang perlu diproses oleh CPU. Single-core seperti memiliki hanya satu kasir yang harus melayani semua pelanggan secara berurutan, sementara multi-core memiliki beberapa kasir yang dapat melayani pelanggan secara bersamaan.</p>
                 </div>
             </div>
@@ -175,9 +176,9 @@
 
     <section id="benchmark" class="benchmark-section">
         <div class="container">
-            <h2 class="section-title">Simulasi Benchmark</h2>
+            <h2 class="section-title reveal">Simulasi Benchmark</h2>
             <div class="benchmark-container">
-                <div class="benchmark-controls">
+                <div class="benchmark-controls reveal">
                     <div class="workload-selector">
                         <button class="workload-btn active" data-workload="gaming">Gaming</button>
                         <button class="workload-btn" data-workload="video-editing">Video Editing</button>
@@ -185,10 +186,10 @@
                     </div>
                     <button id="run-benchmark" class="btn">Jalankan Benchmark</button>
                 </div>
-                <div class="benchmark-results">
+                <div class="benchmark-results reveal">
                     <div id="benchmark-chart"></div>
                 </div>
-                <div class="benchmark-explanation">
+                <div class="benchmark-explanation reveal">
                     <p>Benchmark ini mensimulasikan bagaimana performa CPU dengan jumlah core yang berbeda dalam menangani berbagai jenis workload. Perhatikan bahwa workload yang dapat diparalelkan (seperti rendering video) akan mendapatkan manfaat lebih besar dari core yang lebih banyak.</p>
                 </div>
             </div>
@@ -197,36 +198,36 @@
 
     <section id="recommendation" class="recommendation-section">
         <div class="container">
-            <h2 class="section-title">Mana yang Lebih Baik untuk Anda?</h2>
-            <div class="quiz-container">
-                <div class="quiz-question">
+            <h2 class="section-title reveal">Mana yang Lebih Baik untuk Anda?</h2>
+            <div class="quiz-container reveal">
+                <div class="quiz-question reveal">
                     <h3>1. Apa penggunaan utama perangkat Anda?</h3>
                     <div class="quiz-options">
-                        <div class="quiz-option" data-value="gaming">Gaming</div>
-                        <div class="quiz-option" data-value="productivity">Produktivitas (Office, browsing)</div>
-                        <div class="quiz-option" data-value="content-creation">Konten Kreatif (Video editing, 3D rendering)</div>
-                        <div class="quiz-option" data-value="programming">Programming & Development</div>
+                        <div class="quiz-option reveal" data-value="gaming">Gaming</div>
+                        <div class="quiz-option reveal" data-value="productivity">Produktivitas (Office, browsing)</div>
+                        <div class="quiz-option reveal" data-value="content-creation">Konten Kreatif (Video editing, 3D rendering)</div>
+                        <div class="quiz-option reveal" data-value="programming">Programming & Development</div>
                     </div>
                 </div>
-                <div class="quiz-question">
+                <div class="quiz-question reveal">
                     <h3>2. Berapa budget yang Anda siapkan untuk CPU?</h3>
                     <div class="quiz-options">
-                        <div class="quiz-option" data-value="low">Rendah (Di bawah Rp 3 juta)</div>
-                        <div class="quiz-option" data-value="medium">Menengah (Rp 3-6 juta)</div>
-                        <div class="quiz-option" data-value="high">Tinggi (Di atas Rp 6 juta)</div>
+                        <div class="quiz-option reveal" data-value="low">Rendah (Di bawah Rp 3 juta)</div>
+                        <div class="quiz-option reveal" data-value="medium">Menengah (Rp 3-6 juta)</div>
+                        <div class="quiz-option reveal" data-value="high">Tinggi (Di atas Rp 6 juta)</div>
                     </div>
                 </div>
-                <div class="quiz-question">
+                <div class="quiz-question reveal">
                     <h3>3. Aplikasi apa yang paling sering Anda gunakan?</h3>
                     <div class="quiz-options">
-                        <div class="quiz-option" data-value="single-threaded">Aplikasi single-threaded (sebagian game, aplikasi office)</div>
-                        <div class="quiz-option" data-value="multi-threaded">Aplikasi multi-threaded (video editor, compiler)</div>
-                        <div class="quiz-option" data-value="mixed">Kombinasi keduanya</div>
+                        <div class="quiz-option reveal" data-value="single-threaded">Aplikasi single-threaded (sebagian game, aplikasi office)</div>
+                        <div class="quiz-option reveal" data-value="multi-threaded">Aplikasi multi-threaded (video editor, compiler)</div>
+                        <div class="quiz-option reveal" data-value="mixed">Kombinasi keduanya</div>
                     </div>
                 </div>
-                <button id="get-recommendation" class="btn">Dapatkan Rekomendasi</button>
-                <div class="quiz-result" id="recommendation-result">
-
+                <button id="get-recommendation" class="btn reveal">Dapatkan Rekomendasi</button>
+                <div class="quiz-result" id="recommendation-result reveal">
+                    <!-- Rekomendasi akan ditampilkan di sini -->
                 </div>
             </div>
         </div>
@@ -234,9 +235,9 @@
 
     <section id="glossary" class="glossary-section">
         <div class="container">
-            <h2 class="section-title">Glosarium</h2>
+            <h2 class="section-title reveal">Glosarium</h2>
             <div class="glossary-container">
-                <div class="glossary-term">
+                <div class="glossary-term reveal">
                     <div class="term-title">
                         <span class="term-name">Core</span>
                         <span class="term-toggle"><ion-icon name="chevron-down" class="chevron-icon"></ion-icon></span>
@@ -245,7 +246,7 @@
                         <p>Unit pemrosesan independen dalam sebuah CPU yang mampu mengeksekusi instruksi. Sebuah CPU dapat memiliki satu core (single-core) atau beberapa core (multi-core).</p>
                     </div>
                 </div>
-                <div class="glossary-term">
+                <div class="glossary-term reveal">
                     <div class="term-title">
                         <span class="term-name">Thread</span>
                         <span class="term-toggle"><ion-icon name="chevron-down" class="chevron-icon"></ion-icon></span>
@@ -254,7 +255,7 @@
                         <p>Urutan instruksi yang dapat dijadwalkan untuk dijalankan oleh core. Sebuah core dapat menangani satu thread (single-threading) atau beberapa thread sekaligus (multi-threading).</p>
                     </div>
                 </div>
-                <div class="glossary-term">
+                <div class="glossary-term reveal">
                     <div class="term-title">
                         <span class="term-name">Clock Speed</span>
                         <span class="term-toggle"><ion-icon name="chevron-down" class="chevron-icon"></ion-icon></span>
@@ -263,7 +264,7 @@
                         <p>Kecepatan di mana sebuah core mengeksekusi instruksi, diukur dalam Hertz (Hz). Clock speed yang lebih tinggi biasanya berarti kinerja single-core yang lebih baik.</p>
                     </div>
                 </div>
-                <div class="glossary-term">
+                <div class="glossary-term reveal">
                     <div class="term-title">
                         <span class="term-name">Parallelism</span>
                         <span class="term-toggle"><ion-icon name="chevron-down" class="chevron-icon"></ion-icon></span>
@@ -272,7 +273,7 @@
                         <p>Kemampuan untuk mengeksekusi beberapa instruksi atau tugas secara bersamaan. Multi-core CPU memungkinkan parallelism yang lebih besar dibandingkan single-core.</p>
                     </div>
                 </div>
-                <div class="glossary-term">
+                <div class="glossary-term reveal">
                     <div class="term-title">
                         <span class="term-name">Pipeline</span>
                         <span class="term-toggle"><ion-icon name="chevron-down" class="chevron-icon"></ion-icon></span>
@@ -285,12 +286,12 @@
         </div>
     </section>
 
-    <button class="scroll-to-top" id="scrollToTop">
+    <button class="scroll-to-top reveal" id="scrollToTop">
         <ion-icon name="arrow-up-outline"></ion-icon>
     </button>
 
     <footer>
-        <div class="container">
+        <div class="container reveal">
             <div class="footer-content">
                 <div class="logo">Kelompok 5</div>
                 <ul class="footer-links">

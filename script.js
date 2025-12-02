@@ -883,6 +883,24 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCustomerCounts();
     updateTimeDisplays();
     hideLoadingScreen();
+
+     // --- ANIMASI MANUAL REVEAL DI SINI BRO ---
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // saat masuk layar → muncul
+            entry.target.classList.add("show");
+        } else {
+            // saat keluar layar → reset biar bisa animasi ulang
+            entry.target.classList.remove("show");
+        }
+        });
+    }, { threshold: 0.3 }); //
+
+    revealElements.forEach(el => observer.observe(el));
+    
     console.log('Kelompok 5\nPerbedaan Single-Core vs Multi-core\nAqshal Virgiawan\nDika Pida Ismail\nFauzan Fathurrohman\nHarlan Ikhsan\nJasmine Haimana Wildan\nRafly Al Bukhary\nRidho Muhamad Ilham');
 });
 startLoadingDots();
@@ -896,7 +914,7 @@ const teamSwiper = new Swiper('.team-swiper', {
     spaceBetween: 30,
     loop: true,
     autoplay: {
-        delay: 4000,
+        delay: 2000,
         disableOnInteraction: true,
     },
     coverflowEffect: {
@@ -909,10 +927,6 @@ const teamSwiper = new Swiper('.team-swiper', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
     },
     breakpoints: {
         320: {
@@ -940,4 +954,36 @@ const teamSwiper = new Swiper('.team-swiper', {
             },
         },
     }
+});
+
+// Event listeners untuk navigasi dengan klik pada foto
+document.addEventListener('click', function(event) {
+    const memberImageWrapper = event.target.closest('.member-image-wrapper');
+    if (!memberImageWrapper) return;
+
+    const swiperSlide = memberImageWrapper.closest('.swiper-slide');
+    if (!swiperSlide) return;
+
+    // Cek posisi slide - apakah slide aktif atau bukan
+    const isActive = swiperSlide.classList.contains('swiper-slide-active');
+    const swiperWrapper = swiperSlide.closest('.swiper-wrapper');
+    const allSlides = Array.from(swiperWrapper.querySelectorAll('.swiper-slide'));
+    const currentIndex = allSlides.indexOf(swiperSlide);
+
+    // Cari slide aktif
+    const activeSlide = swiperWrapper.querySelector('.swiper-slide-active');
+    const activeIndex = allSlides.indexOf(activeSlide);
+
+    console.log('Clicked slide index:', currentIndex, 'Active slide index:', activeIndex);
+
+    // Jika klik slide di kanan (index lebih besar dari aktif), slide ke kanan
+    if (currentIndex > activeIndex) {
+        teamSwiper.slideNext();
+    } 
+    // Jika klik slide di kiri (index lebih kecil dari aktif), slide ke kiri
+    else if (currentIndex < activeIndex) {
+
+        teamSwiper.slidePrev();
+    }
+    // Jika klik slide aktif (tengah), tidak melakukan apa-apa
 });
